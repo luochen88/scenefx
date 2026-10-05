@@ -594,8 +594,8 @@ struct wlr_egl *wlr_egl_create_with_drm_fd(int drm_fd) {
 
 		egl->gbm_device = gbm_create_device(gbm_fd);
 		if (!egl->gbm_device) {
+			wlr_log_errno(WLR_ERROR, "Failed to create GBM device from fd %d", gbm_fd);
 			close(gbm_fd);
-			wlr_log(WLR_ERROR, "Failed to create GBM device");
 			goto error;
 		}
 

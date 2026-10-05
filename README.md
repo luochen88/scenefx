@@ -4,6 +4,20 @@ wlroots is the de-facto library for building wayland compositors, and its scene 
 
 **Please note: while SceneFX is in use by SwayFX version 0.5, it is not yet ready for usage by other compositors. Please refer to the [1.0 milestone](https://github.com/wlrfx/scenefx/milestone/2) to track the remaining tasks for our stable 1.0 release**
 
+## Anland 5 branch
+
+This branch remains SceneFX `0.5.0`. It is built against [wlroots `anland5`](https://github.com/luochen88/wlroots/tree/anland5), which must be installed first. The local SceneFX change preserves the real `errno` with `wlr_log_errno` before closing a failed GBM fd, so GBM device creation failures keep their original diagnostic cause.
+
+Build and install this branch before building [Mango's `anland5` branch](https://github.com/luochen88/mango/tree/anland5):
+
+```sh
+git clone -b anland5 https://github.com/luochen88/scenefx.git
+cd scenefx
+meson setup build --prefix=/usr/local --buildtype=debugoptimized
+meson compile -C build
+sudo meson install -C build
+```
+
 ## Compositors Using SceneFX
 Plenty of popular wayland compositors are using SceneFX to render eyecandy, including:
 - [SwayFX](https://github.com/WillPower3309/swayfx)
