@@ -1,0 +1,48 @@
+Source: scenefx
+Section: libs
+Priority: optional
+Maintainer: Anland Maintainers <noreply@example.invalid>
+Build-Depends:
+ debhelper-compat (= 13),
+ meson (>= 1.3),
+ ninja-build,
+ pkgconf,
+ libwlroots-0.20-dev (= 0.20.2-1anland5),
+ wayland-protocols (>= 1.47),
+ libwayland-dev (>= 1.24),
+ libwayland-bin,
+ libdrm-dev (>= 2.4.129),
+ libxkbcommon-dev (>= 1.8),
+ libpixman-1-dev (>= 0.46),
+ libegl-dev,
+ libgbm-dev,
+ libgles-dev
+Standards-Version: 4.7.0
+Rules-Requires-Root: no
+Homepage: https://github.com/wlrfx/scenefx
+
+Package: libscenefx-0.5-0
+Architecture: any
+Multi-Arch: same
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: wlroots effects library - Anland 5 ABI
+ SceneFX provides effects helpers for wlroots compositors. This package contains
+ the Anland 5 SceneFX 0.5 runtime library.
+
+Package: libscenefx-0.5-dev
+Section: libdevel
+Architecture: any
+Multi-Arch: same
+Depends:
+ libscenefx-0.5-0 (= ${binary:Version}),
+ libwlroots-0.20-dev (= 0.20.2-1anland5),
+ libwayland-dev,
+ libdrm-dev,
+ libxkbcommon-dev,
+ libpixman-1-dev,
+ libegl-dev,
+ libgbm-dev,
+ libgles-dev,
+ ${misc:Depends}
+Description: wlroots effects library - development files
+ Development headers, linker symlink, and pkg-config metadata for SceneFX 0.5.
